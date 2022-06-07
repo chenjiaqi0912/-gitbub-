@@ -1,0 +1,36 @@
+git clone出现 fatal: unable to access ‘https://github.com/...‘的两种解决方法
+
+方法一：
+步骤1：
+打开网页输入www.github.com查看是否可以打开网页
+步骤2：
+在终端输入ping github.com
+2.1 看是否可以ping通，ping通的结果如下所示
+    正在 Ping github.com [140.82.114.3] 具有 32 字节的数据:
+    来自 140.82.114.3 的回复: 字节=32 时间=385ms TTL=41
+    来自 140.82.114.3 的回复: 字节=32 时间=287ms TTL=40
+    来自 140.82.114.3 的回复: 字节=32 时间=394ms TTL=41
+    来自 140.82.114.3 的回复: 字节=32 时间=302ms TTL=41
+    ...
+        
+2.2 如果ping通了，排除git不正常的情况，可能是网络不好，可以转到方法二；
+
+2.3 如果没有ping通，参考解决无法访问github的方法（P.S.：如果是windows，hosts文件的位置：C:\Windows\System32\drivers\etc，建议将该文件复制到桌面,并在最后添加，保存后再复制到该位置覆盖原文件，如果还不行，尝试清理dns缓存，win+r，输入‘cmd’，再输入ipconfig/flushdns；如果是linux，hosts文件的文职是：/etc/hosts，打开后再最后添加，保存关闭）
+    2.3.1 在hosts文件中加入两行
+          140.82.113.4 github.com
+          140.82.113.4 www.github.com
+          其中140.82.113.4 可以在 https://github.com.ipaddress.com/www.github.com 查询
+    2.3.2 关闭host文件，操作2.4
+    
+2.4 关掉当前终端，重新打开一个终端，再次尝试ping
+
+
+方法二：
+步骤1：
+注册并登录gitee（https://gitee.com/）
+步骤2：
+右上角“+”，新建仓库
+步骤3：
+新建仓库-导入已有的仓库（即需要clone的仓库）
+步骤4：
+进入仓库，复制连接，进入终端
